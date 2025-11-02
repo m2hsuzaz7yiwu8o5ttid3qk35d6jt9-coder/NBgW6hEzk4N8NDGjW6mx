@@ -7837,7 +7837,7 @@
          "Version" : "0.78"
       }
    ],
-   "BackendUrl" : "https://voidinhsa.discloud.app",
+   "BackendUrl" : "https://backendzioresgjeplus.discloud.app",
    "BackgroundDownloadConfig" : {
       "PreventCancelAtMegaBytesLeft" : 1.50,
       "PreventCancelAtPercent" : 0.850,
@@ -229325,7 +229325,7 @@
          "Version" : "0.30"
       },
       {
-         "FriendlyName" : "Clown Jingles",
+         "FriendlyName" : "Stumble Cups",
          "Hidden" : false,
          "IsFallback" : false,
          "NoGacha" : false,
@@ -229336,7 +229336,7 @@
          "Version" : "0.30"
       },
       {
-         "FriendlyName" : "Clown Bozo",
+         "FriendlyName" : "rxve",
          "Hidden" : false,
          "IsFallback" : false,
          "NoGacha" : false,
