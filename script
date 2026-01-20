@@ -4,7 +4,7 @@ local Library = loadstring(game:HttpGet("https://raw.githubusercontent.com/xHept
     
 
     local main = Window:NewTab("Main")
-    local MainSection = Tab:NewSection("Server Side")
+    local MainSection = main:NewSection("Server Side")
     MainSection:NewButton("ESP", "Show Players", function(test)
     if test then
        espEnabled = true
