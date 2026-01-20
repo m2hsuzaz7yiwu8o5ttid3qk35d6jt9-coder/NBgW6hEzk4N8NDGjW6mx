@@ -34,7 +34,7 @@ titleLabel.BackgroundColor3 = Color3.fromRGB(57, 186, 50)
 titleLabel.Text = "DUPE SCRIPT (50+ M/S)"
 titleLabel.TextColor3 = Color3.fromRGB(0, 0, 0)
 titleLabel.TextSize = 16
-titleLabel.Font = Enum.Font.LilitaOne
+titleLabel.Font = Enum.Font.FredokaOne
 titleLabel.BorderSizePixel = 0
 titleLabel.Parent = mainFrame
 
@@ -58,7 +58,7 @@ local function createButton(name, text, yPos)
     btn.Text = text
     btn.TextColor3 = Color3.fromRGB(255, 0, 0)
     btn.TextSize = 18
-    btn.Font = Enum.Font.LilitaOne
+    btn.Font = Enum.Font.FredokaOne
     btn.BorderSizePixel = 0
     btn.Parent = mainFrame
     
