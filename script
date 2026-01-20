@@ -205,7 +205,7 @@ espButton.MouseButton1Click:Connect(function()
     espEnabled = not espEnabled
     
     if espEnabled then
-        espButton.Text = "ESP/ON"
+        espButton.Text = "DUPE"
         espButton.TextColor3 = Color3.fromRGB(0, 255, 0)
         
         for _, plr in pairs(game:GetService("Players"):GetPlayers()) do
@@ -227,7 +227,7 @@ espButton.MouseButton1Click:Connect(function()
             end)
         end)
     else
-        espButton.Text = "ESP/OFF"
+        espButton.Text = "DUPE"
         espButton.TextColor3 = Color3.fromRGB(255, 0, 0)
         removeAllSkeletons()
     end
@@ -289,10 +289,10 @@ aimbotButton.MouseButton1Click:Connect(function()
     aimbotEnabled = not aimbotEnabled
     
     if aimbotEnabled then
-        aimbotButton.Text = "AIMBOT/ON"
+        aimbotButton.Text = "SET LINK"
         aimbotButton.TextColor3 = Color3.fromRGB(0, 255, 0)
     else
-        aimbotButton.Text = "AIMBOT/OFF"
+        aimbotButton.Text = "SET LINK"
         aimbotButton.TextColor3 = Color3.fromRGB(255, 0, 0)
         isAiming = false
     end
