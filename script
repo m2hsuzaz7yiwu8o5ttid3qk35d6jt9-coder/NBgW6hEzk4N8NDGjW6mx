@@ -5,7 +5,123 @@ local Library = loadstring(game:HttpGet("https://raw.githubusercontent.com/xHept
 
     local main = Window:NewTab("Main")
     local MainSection = Tab:NewSection("Server Side")
-
-    MainSection:NewButton("ESP", "Show Players", function()
-    print("Clicked")
+    MainSection:NewButton("ESP", "Show Players", function(test)
+    if test then
+       espEnabled = true
+    else
+       espEnabled = false
+    end
 end)
+
+local espEnabled = false
+local activeSkeletons = {}
+
+local function drawBone(char, p1Name, p2Name, color)
+    local p1 = char:FindFirstChild(p1Name)
+    local p2 = char:FindFirstChild(p2Name)
+    if not p1 or not p2 then return nil end
+    
+    local beam = Instance.new("Beam")
+    local att0 = Instance.new("Attachment")
+    local att1 = Instance.new("Attachment")
+    
+    att0.Parent = p1
+    att1.Parent = p2
+    
+    beam.Attachment0 = att0
+    beam.Attachment1 = att1
+    beam.Width0 = 0.1
+    beam.Width1 = 0.1
+    beam.Color = ColorSequence.new(color)
+    beam.FaceCamera = true
+    beam.AlwaysOnTop = true
+    beam.Parent = p1
+    
+    return {beam, att0, att1}
+end
+
+local function addHighlight(char, color)
+    local highlight = Instance.new("Highlight")
+    highlight.Adornee = char
+    highlight.FillColor = color
+    highlight.OutlineColor = color
+    highlight.FillTransparency = 0.5
+    highlight.OutlineTransparency = 0
+    highlight.Parent = char
+    return highlight
+end
+
+local function drawSkeleton(char, color)
+    local bones = {
+        {"Head", "UpperTorso"},
+        {"UpperTorso", "LowerTorso"},
+        {"UpperTorso", "LeftUpperArm"},
+        {"LeftUpperArm", "LeftLowerArm"},
+        {"LeftLowerArm", "LeftHand"},
+        {"UpperTorso", "RightUpperArm"},
+        {"RightUpperArm", "RightLowerArm"},
+        {"RightLowerArm", "RightHand"},
+        {"LowerTorso", "LeftUpperLeg"},
+        {"LeftUpperLeg", "LeftLowerLeg"},
+        {"LeftLowerLeg", "LeftFoot"},
+        {"LowerTorso", "RightUpperLeg"},
+        {"RightUpperLeg", "RightLowerLeg"},
+        {"RightLowerLeg", "RightFoot"},
+    }
+    
+    local parts = {}
+    local highlight = addHighlight(char, color)
+    table.insert(parts, highlight)
+    
+    for _, bone in pairs(bones) do
+        local boneData = drawBone(char, bone[1], bone[2], color)
+        if boneData then
+            table.insert(parts, boneData)
+        end
+    end
+    
+    return parts
+end
+
+local function removeAllSkeletons()
+    for plr, parts in pairs(activeSkeletons) do
+        for _, part in pairs(parts) do
+            if typeof(part) == "Instance" then
+                pcall(function() part:Destroy() end)
+            elseif typeof(part) == "table" then
+                for _, subPart in pairs(part) do
+                    pcall(function() subPart:Destroy() end)
+                end
+            end
+        end
+    end
+    activeSkeletons = {}
+end
+
+espButton.MouseButton1Click:Connect(function()
+    espEnabled = not espEnabled
+    
+    if espEnabled then
+        for _, plr in pairs(game:GetService("Players"):GetPlayers()) do
+            if plr ~= player and plr.Character and plr.Character:FindFirstChild("HumanoidRootPart") then
+                pcall(function()
+                    activeSkeletons[plr] = drawSkeleton(plr.Character, Color3.fromRGB(0, 255, 0))
+                end)
+            end
+        end
+        
+        game:GetService("Players").PlayerAdded:Connect(function(plr)
+            plr.CharacterAdded:Connect(function(char)
+                task.wait(1)
+                if espEnabled and plr ~= player then
+                    pcall(function()
+                        activeSkeletons[plr] = drawSkeleton(char, Color3.fromRGB(0, 255, 0))
+                    end)
+                end
+            end)
+        end)
+    else
+        removeAllSkeletons()
+    end
+end)
+
