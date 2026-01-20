@@ -7,7 +7,7 @@ local Library = loadstring(game:HttpGet("https://raw.githubusercontent.com/xHept
     local stealer = Window:NewTab("Stealer")
     local helper = Window:NewTab("Helper")
     local player = Window:NewTab("Player")
-    local clientside = Window.NewTab("Client Side")
+    local clientside = Window.NewTab("VIP")
 
     local MainSection = main:NewSection("Server Side")
 
