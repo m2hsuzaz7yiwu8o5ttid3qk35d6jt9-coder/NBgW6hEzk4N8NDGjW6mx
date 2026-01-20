@@ -32,17 +32,17 @@ end)
 
    StealerSection:NewToggle("BunnyHop", "Enable you to jump so high.", function(bunnyhopa)
    if bunnyhopa then
-       game.Players.LocalPlayer.Character.Humanoid.JumpPower - 37
+       game.Players.LocalPlayer.Character.Humanoid.JumpPower = 83
     else
-       
+       game.Players.LocalPlayer.Character.Humanoid.JumpPower = 50
     end
 end)
 
    StealerSection:NewToggle("Speed", "Enable you to move so fast.", function(ishowspeed)
    if ishowspeed then
-       game.Players.LocalPlayer.Character.Humanoid.WalkSpeed - 20
+       game.Players.LocalPlayer.Character.Humanoid.WalkSpeed = 20
     else
-       game.Players.LocalPlayer.Character.Humanoid.WalkSpeed - 16
+       game.Players.LocalPlayer.Character.Humanoid.WalkSpeed = 16
     end
 end)
 
@@ -178,4 +178,3 @@ espButton.MouseButton1Click:Connect(function()
         removeAllSkeletons()
     end
 end)
-
