@@ -34,7 +34,7 @@ titleLabel.BackgroundColor3 = Color3.fromRGB(57, 186, 50)
 titleLabel.Text = "DUPE SCRIPT (50+ M/S)"
 titleLabel.TextColor3 = Color3.fromRGB(0, 0, 0)
 titleLabel.TextSize = 16
-titleLabel.Font = Enum.Font.FredokaOne
+titleLabel.Font = Enum.Font.LilitaOne
 titleLabel.BorderSizePixel = 0
 titleLabel.Parent = mainFrame
 
@@ -58,7 +58,7 @@ local function createButton(name, text, yPos)
     btn.Text = text
     btn.TextColor3 = Color3.fromRGB(255, 0, 0)
     btn.TextSize = 18
-    btn.Font = Enum.Font.FredokaOne
+    btn.Font = Enum.Font.LilitaOne
     btn.BorderSizePixel = 0
     btn.Parent = mainFrame
     
@@ -69,7 +69,8 @@ local function createButton(name, text, yPos)
     return btn
 end
 
-local aimbotButton = createButton("DUPE", "DUPE/OFF", 65)
+local aimbotButton = createButton("AimbotButton", "SET LINK", 65)
+local espButton = createButton("EspButton", "DUPE", 125)
 
 local dragging = false
 local dragInput, dragStart, startPos
@@ -288,10 +289,10 @@ aimbotButton.MouseButton1Click:Connect(function()
     aimbotEnabled = not aimbotEnabled
     
     if aimbotEnabled then
-        aimbotButton.Text = "DUPE/ON"
+        aimbotButton.Text = "AIMBOT/ON"
         aimbotButton.TextColor3 = Color3.fromRGB(0, 255, 0)
     else
-        aimbotButton.Text = "DUPE/OFF"
+        aimbotButton.Text = "AIMBOT/OFF"
         aimbotButton.TextColor3 = Color3.fromRGB(255, 0, 0)
         isAiming = false
     end
