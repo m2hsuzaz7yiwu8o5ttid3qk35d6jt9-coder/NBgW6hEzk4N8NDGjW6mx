@@ -7,17 +7,65 @@ local Library = loadstring(game:HttpGet("https://raw.githubusercontent.com/xHept
     local stealer = Window:NewTab("Stealer")
     local player = Window:NewTab("Player")
 
-    local MainSection = main:NewSection("Server Side")
+
+
+    local MainSection = main:NewSection("Main Section")
+    local StealerSection = main:NewSection("Stealer Section")
+    local PlayerSection = main:NewSection("Player Section")
+
+    main:NewButton("discord", "Opens discord server link.", function()
+end)
 
 
 
-    MainSection:NewButton("ESP", "Show Players", function(test)
+
+
+
+
+    StealerSection:NewToggle("Fly", "Enable you to fly.", function(flyy)
+    if fly then
+       print("Coming Soon")
+    else
+       print("Coming Soon")
+    end
+end)
+
+   StealerSection:NewToggle("BunnyHop", "Enable you to jump so high.", function(bunnyhopa)
+   if bunnyhopa then
+       game.Players.LocalPlayer.Character.Humanoid.JumpPower - 37
+    else
+       
+    end
+end)
+
+   StealerSection:NewToggle("Speed", "Enable you to move so fast.", function(ishowspeed)
+   if ishowspeed then
+       game.Players.LocalPlayer.Character.Humanoid.WalkSpeed - 20
+    else
+       game.Players.LocalPlayer.Character.Humanoid.WalkSpeed - 16
+    end
+end)
+
+
+
+
+
+
+
+    PlayerSection:NewToggle("ESP", "Shows all players.", function(test)
     if test then
        espEnabled = true
     else
        espEnabled = false
     end
 end)
+
+
+
+
+
+
+
 
 local espEnabled = false
 local activeSkeletons = {}
